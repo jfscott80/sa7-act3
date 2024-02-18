@@ -7,24 +7,48 @@ def csv_parser(filename)
     # puts content.is_a? String     true
     # puts content.size             50
     # remove newline chars
+    my_array = []
     content = content.split("\n")
+    content.each do |element|
+        my_array.push(element)
+    end
+    puts my_array.size
     # puts content.is_a? String     false
     # puts content.is_a? Array      true
     # puts content.size             3
+    csv_hash = {}
+    hash = {}
+    keys = content[0].split(",")
+    # puts keys.inspect
+    # values = content[1].split(",")
+    # puts values.inspect
     i = 0
-    until i >= content.size
-        content = content[i].split(",")
-        puts content.inspect
+    j = 1
+    keys.each do
+        # values = content[j].split(",")
+
+        # hash[keys[i]] = values[j]
         i += 1
+        j += 1
     end
-    # keys = content[0].split(",")
+    # hash[keys] = values
+    puts hash.inspect
+    # content.each_index do |element|
+    #     value = content[element].split(",")
+    
+    #     keys.each do |key|
+    #         hash[key] = value
+    #     end
+    # end
+    # # keys.each do
 
     # puts keys.inspect               #["Name", "Age", "City"]
-    # puts keys.is_a? Array           #true
-    # puts keys.size                  #3
-
-    csv_hash = {}
-
+    # puts keys.is_a? Array           #false
+    # puts keys.is_a? String
+    # puts keys.size                  #   13
+    # content.each do { |element| element.split(",") }
+    # end
+    # puts csv_hash.inspect
     # i = 1
     # until i >= content.size
     #     csv_hash = keys[]

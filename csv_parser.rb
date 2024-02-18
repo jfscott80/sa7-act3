@@ -1,77 +1,75 @@
 #script.rb
-# Objective: Implement a simple CSV parser
-# that reads data from a CSV file and 
-# transforms it into an array of hashes,
-# with each hash representing a row of the
-# CSV.
-# Task: Write a Ruby script that reads a 
-# CSV file named data.csv, where the first
-# row is the header containing column 
-# names. Each subsequent row contains
-# data corresponding to these column names. Convert this CSV file into an array of hashes, where each hash represents a row of data with keys as column names and values as row values. Assume the CSV file does not contain any special characters like commas within data fields.
 
-# Expected Output (printed as a Ruby object):
-# [
-#   { "Name" => "Alice", "Age" => "30", "City" => "New York" },
-#   { "Name" => "Bob", "Age" => "25", "City" => "Los Angeles" }
-# ]
+def csv_parser(filename)
+    data = []
+    # read csv file => set as variable content
+    content = File.read(filename)
+    # puts content.is_a? String     true
+    # puts content.size             50
+    # remove newline chars
+    content = content.split("\n")
+    # puts content.is_a? String     false
+    # puts content.is_a? Array      true
+    # puts content.size             3
+    i = 0
+    until i >= content.size
+        content = content[i].split(",")
+        puts content.inspect
+        i += 1
+    end
+    # keys = content[0].split(",")
+
+    # puts keys.inspect               #["Name", "Age", "City"]
+    # puts keys.is_a? Array           #true
+    # puts keys.size                  #3
+
+    csv_hash = {}
+
+    # i = 1
+    # until i >= content.size
+    #     csv_hash = keys[]
+    #     i += 1
+    # end
+    # data.push(content.to_s)
+    # puts data.is_a? String
+    # puts data.kind_of? Array
+    # puts data.count
+    # data.each do |data, i|
+    #     data[i].split(",")
+    # end
+    # puts data
+    # puts content.inspect
 
 
 
-# ARGV.each do |arg|
-#     puts "Hello, #{arg}!"
-# end
+    end
+    # keys = $content[0]
+    # puts keys
+    # puts $content
+    # puts $content.inspect
+    
+    
 
-
-# ARGV.each do |arg|
-#     csv_parser(arg)
-# end
-
-# def csv_parser(file_name) do |csv|
-#     csv.open(file_name, 'r')
-#     csv_hash = []
-#     header = []
-#     i = 0
-#     csv.each_line do |row, element|
-#         row.split(',')
-#         if i = 0
-#             header.push(row)
-#             header.map(element + ':')
-#             csv_hash.push(header)
-#         else
-#             csv_hash.each |key, value|
+csv_parser("data.csv")    
+    
+#     File.open("data.txt", "w") do |file|
+#           file.write(content)
 #         end
-        
-#         csv_hash
-
+#     i = 0
+#     csv_hash = {}
+#     File.open('data.txt') do |file|
+#         file.each_line do |line|
+#             if i == 0
+#                 keys = line.each
+#                 i = 1
+#                 puts keys
+#             else
+#                 value = line.each
+#                 csv_hash[keys] = value
+#             end
+#         end
 #     end
-
+        
 # end
-# require 'csv'
-# ARGV.each do |arg|
-#     csv_to_hashes(arg)
-# end
-# Read the CSV file and convert it into an array of hashes
-def csv_to_hashes(file) #do |csv|
-  data = []
-  keys = [] # Initialize an empty array to store column names
-
-  File.each_line(file, headers: true) do |row|
-    # If keys are not already set, extract them from the first row
-    keys = row.headers unless keys.any?
-
-    # Create a hash for each row with keys as column names and values as row values
-    data << Hash[keys.zip(row.fields)]
-  end
-
-  data
-end
-
-# # Usage example:
-# csv_file_path = 'data.csv'
-# result = csv_to_hashes(csv_file_path)
-puts csv_to_hashes('data.csv')
-# # Print the resulting array of hashes
-# result.each do |row|
-#   puts row.inspect
-# end
+# csv_parser('data.csv')
+# puts csv_hash
